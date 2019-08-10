@@ -1,6 +1,6 @@
 # Programming Languages and Concepts
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/git/https%3A%2F%2Fgitlab.beuth-hochschule.de%2Ftramberend%2Fplc-notebooks.git/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/monofon/plc-notebooks/master)
 
 This project contains interactive Jupyter notebooks for the masters course
 [*Programming Languages and
