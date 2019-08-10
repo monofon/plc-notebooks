@@ -1,32 +1,22 @@
-FROM fpco/stack-build:lts-13.18
+# Dockerfile for mybinder.org
+#
+# https://github.com/jamesdbrock/learn-you-a-haskell-notebook/blob/master/Dockerfile
+#
+# Test this Dockerfile:
+#
+#     docker build -t learn-you-a-haskell .
+#     docker run --rm -p 8888:8888 --name learn-you-a-haskell --env JUPYTER_TOKEN=x learn-you-a-haskell:latest
+#
 
-# Install all necessary Ubuntu packages
-RUN apt-get update && apt-get install -y python3-pip libgmp-dev libmagic-dev libtinfo-dev libzmq3-dev libcairo2-dev libpango1.0-dev libblas-dev liblapack-dev gcc g++ && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install Jupyter notebook
-RUN pip3 install -U jupyter
-
-ENV LANG en_US.UTF-8
-ENV NB_USER jovyan
-ENV NB_UID 1000
-ENV HOME /home/${NB_USER}
-
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
+FROM crosscompass/ihaskell-notebook:e763dc764d90
 
 USER root
-RUN chown -R ${NB_UID} ${HOME}
-USER ${NB_USER}
 
-ENV PATH $(stack path --local-install-root)/bin:$(stack path --snapshot-install-root)/bin:$(stack path --compiler-bin):${HOME}/.local/bin:${PATH}
-RUN stack config set system-ghc --global true
-RUN stack install ihaskell
-RUN ihaskell install --stack
+RUN mkdir /home/$NB_USER/plc
+COPY ./*.ipynb /home/$NB_USER/plc/
+# COPY ./img /home/$NB_USER/plc/img
+RUN chown --recursive $NB_UID:users /home/$NB_USER/plc
 
-WORKDIR ${HOME}
+USER $NB_UID
 
-# Specify the default command to run
-CMD ["jupyter", "notebook", "--ip", "0.0.0.0"]
+ENV JUPYTER_ENABLE_LAB=yes
