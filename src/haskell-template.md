@@ -10,13 +10,11 @@ jupyter:
     name: haskell
     pygments_lexer: Haskell
     version: '8.6.4'
-  nbformat: 4.0
-  nbformat_minor: 2.0
-title: Markdown to Haskell Notebook test
+  nbformat: 4
+  nbformat_minor: 2
 ---
 
-# Welcome to Haskell {#uzag}
-
-``` {.code .haskell}
-putStrLn "Hello Lambda!"
+::: {.cell .code}
+``` {.haskell}
 ```
+:::
