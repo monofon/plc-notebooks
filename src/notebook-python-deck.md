@@ -27,6 +27,7 @@ title: Decker to Jupyter Notebook
 ::: {.cell .code execution_count="1"}
 ``` {.python}
 print("Hello World!")
+print("Fuck Yeah!")
 ```
 
 ::: {.output .stream .stdout}

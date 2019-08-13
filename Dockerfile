@@ -1,20 +1,24 @@
 # Dockerfile for mybinder.org
 #
-# https://github.com/jamesdbrock/learn-you-a-haskell-notebook/blob/master/Dockerfile
+# From:
+# - https://github.com/jamesdbrock/learn-you-a-haskell-notebook/blob/master/Dockerfile
 #
 # Test this Dockerfile:
 #
-#     docker build -t learn-you-a-haskell .
-#     docker run --rm -p 8888:8888 --name learn-you-a-haskell --env JUPYTER_TOKEN=x learn-you-a-haskell:latest
+#     docker build -t plc .
+#     docker run --rm -p 8888:8888 --name plc --env JUPYTER_TOKEN=x plc:latest
 #
 
 FROM crosscompass/ihaskell-notebook:e763dc764d90
 
 USER root
 
-RUN mkdir /home/$NB_USER/plc
-COPY ./*.ipynb /home/$NB_USER/plc/
-# COPY ./img /home/$NB_USER/plc/img
+RUN mkdir -p /home/$NB_USER/plc/notebook
+RUN mkdir -p /home/$NB_USER/plc/img
+
+COPY notebook /home/$NB_USER/plc/notebook
+COPY img /home/$NB_USER/plc/img
+
 RUN chown --recursive $NB_UID:users /home/$NB_USER/plc
 
 USER $NB_UID
