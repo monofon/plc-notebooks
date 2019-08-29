@@ -39,7 +39,7 @@ print("Fuck Yeah!")
 
 # Image {#fyp4}
 
-![](../image/a05-rnd-ok.png)
+![](../img/snowmen.png)
 
 ---
 
@@ -49,7 +49,7 @@ print("Fuck Yeah!")
 
 -   Lorem ipsum
 
-![](../image/a05-rnd-ok.png)
+![](../img/snowmen.png)
 
 ## Column 2 {.right}
 
