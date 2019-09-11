@@ -13,8 +13,5 @@ FROM monofon/plc:latest
 
 USER $NB_USER
 
-RUN mkdir -p /home/$NB_USER/plc/notebook
-RUN mkdir -p /home/$NB_USER/plc/img
-
-COPY notebook /home/$NB_USER/plc/notebook
-COPY img /home/$NB_USER/plc/img
+RUN mkdir -p /home/$NB_USER/plc
+COPY plc /home/$NB_USER/plc
