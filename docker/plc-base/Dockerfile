@@ -1,10 +1,20 @@
-ARG BASE_CONTAINER=crosscompass/ihaskell-notebook:latest
-FROM $BASE_CONTAINER
+# The base image for the PLC course. It contains:
+#
+# - a basic Jupyter server
+# - IHaskell
+# - IJava
+#
+# More languages will probably be added.
+#
+# It is meant to be used as the base image for mybinder.org deployments
+# of exercise note books and as the Jupyter server for ThebeLab in
+# decker slide sets. Can also very well be used locally.
+#
+FROM crosscompass/ihaskell-notebook:latest
 
-# Inspired by https://hub.docker.com/r/crosscompass/ihaskell-notebook/dockerfile
 MAINTAINER Henrik Tramberend <henrik.tramberend@beuth-hochschule.de>
 
-# Java 11
+# Java 11 (Inspired by the official OpenJDK Dockerfile)
 USER root
 
 RUN set -eux; \
